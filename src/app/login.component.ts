@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MainService } from './services/main.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,19 @@ import { Component } from '@angular/core';
 export class LoginComponent {
  user: any= {
     username: '',
-    password: ''
+    pass: ''
+  }
+
+  constructor(private mainService:MainService,private router:Router){
+
   }
 
   login() {
-    console.log(this.user);
+
+    this.router.navigate(['/dashboard',this.user.username]);
+    // this.mainService.loginUser(this.user)
+    // .subscribe(response=>{
+    //   console.log(response);
+    // });
   }
 }

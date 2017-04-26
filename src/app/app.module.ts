@@ -10,12 +10,14 @@ import {LoginComponent} from './login.component';
 
 import {MainService} from './services/main.service';
 import { HeaderComponent } from './components/header/header.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,10 @@ import { HeaderComponent } from './components/header/header.component';
       {
         path: 'register',
         component: RegisterComponent
+      },
+      {
+        path:'dashboard/:userEmail',
+        component:DashboardComponent
       }
     ])
   ],

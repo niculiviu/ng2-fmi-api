@@ -25,6 +25,13 @@ export class MainService {
                     .catch(this.handleError);
   }
 
+  loginUser(user){
+    //user={username:'',password:''}
+    return this.http.post(this.url + 'user/login',user)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
 
   private extractData(res: Response) {
     let body = res.json();

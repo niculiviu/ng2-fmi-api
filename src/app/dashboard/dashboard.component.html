@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <input [(ngModel)]="newCategory" class="form-control" />
+    </div>
+    <div class="col-sm-9">
+      <button class="btn btn-primary" (click)="addNewCategory(newCategory)">Add Category</button>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="col-sm-3" *ngFor="let category of categories">
+      <div class="well well-sm">
+        <p>{{category.categoryName}}</p>
+        <input class="form-control" #newTask (keyup.enter)="addTask(newTask.value,category.id)" />
+        <hr/>
+        <span *ngFor="let task of tasks; let i = index">
+        <div class="panel panel-default"
+           *ngIf="category.id==task.categoryId"
+        >
+          <div
+          [ngClass]="i%2==0?'panel-body green':'panel-body red'" 
+          >
+           
+            {{task.taskName}}
+            <br/>
+            <button
+            (click)="removeTask(i)" 
+            class="btn btn-danger btn-sm">is Done</button>
+          </div>
+        </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
