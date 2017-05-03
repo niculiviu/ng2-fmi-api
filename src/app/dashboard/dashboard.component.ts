@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +10,7 @@ export class DashboardComponent implements OnInit {
   private newTask: string;
   private categories: any = [];
   private tasks: any = [];
-
+  @ViewChild('newTaskInput') newTaskInput;
   constructor() { }
 
   ngOnInit() {
@@ -26,12 +26,13 @@ export class DashboardComponent implements OnInit {
     this.newCategory = '';
   }
 
-  addTask(task, categoryId) {
+  addTask(data) {
     let object = {
       id: new Date(),
-      taskName: task,
-      categoryId: categoryId
+      taskName: data.task,
+      categoryId: data.cat
     }
+    this.newTaskInput.callMe();
     this.tasks.push(object);
   }
 

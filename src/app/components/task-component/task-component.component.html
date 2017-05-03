@@ -1,0 +1,16 @@
+ <span >
+      <div class="panel panel-default"
+           *ngIf="category.id==task.categoryId"
+        >
+          <div
+          [ngClass]="i%2==0?'panel-body green':'panel-body red'" 
+          >
+           
+            {{task.taskName}}
+            <br/>
+            <button
+            (click)="removeTask(i)" 
+            class="btn btn-danger btn-sm">is Done</button>
+          </div>
+        </div>
+        </span>

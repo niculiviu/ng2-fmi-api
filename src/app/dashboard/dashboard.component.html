@@ -12,24 +12,15 @@
     <div class="col-sm-3" *ngFor="let category of categories">
       <div class="well well-sm">
         <p>{{category.categoryName}}</p>
-        <input class="form-control" #newTask (keyup.enter)="addTask(newTask.value,category.id)" />
-        <hr/>
-        <span *ngFor="let task of tasks; let i = index">
-        <div class="panel panel-default"
-           *ngIf="category.id==task.categoryId"
-        >
-          <div
-          [ngClass]="i%2==0?'panel-body green':'panel-body red'" 
-          >
-           
-            {{task.taskName}}
-            <br/>
-            <button
-            (click)="removeTask(i)" 
-            class="btn btn-danger btn-sm">is Done</button>
-          </div>
-        </div>
-        </span>
+        <app-new-task-component 
+        [categoryId]="category.id"
+        (newTaskEvent)="addTask($event)"  #newTaskInput></app-new-task-component>
+        <!-- *ngFor="let task of tasks; let i = index"-->
+       <app-task-component 
+           *ngFor="let task of tasks; let i = index"
+           [task]="task"
+           [category]="category"
+           ></app-task-component>
       </div>
     </div>
   </div>

@@ -11,13 +11,17 @@ import {LoginComponent} from './login.component';
 import {MainService} from './services/main.service';
 import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewTaskComponentComponent } from './components/new-task-component/new-task-component.component';
+import { TaskComponentComponent } from './components/task-component/task-component.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    NewTaskComponentComponent,
+    TaskComponentComponent
   ],
   imports: [
     BrowserModule,
